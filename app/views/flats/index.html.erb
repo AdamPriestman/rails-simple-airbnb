@@ -1,0 +1,19 @@
+<h3>Simple Airbnb</h3>
+
+<h2>All our flats (<%= @flats.count %>)</h1>
+
+<ul>
+  <% @flats.each do |flat| %>
+    <li>
+      <h3><%= flat.name %></h3>
+      <strong>Address:</strong> <%= flat.address %>
+      <strong>Price per night:</strong> <%= flat.price_per_night %>
+      <strong>Number of guests:</strong> <%= flat.number_of_guests %>
+    </li>
+    <%= link_to "More info", flat_path(flat) %>
+    <%= link_to "Edit flat", edit_flat_path(flat) %>
+    <%= link_to "Remove", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <% end %>
+</ul>
+
+<%= link_to "Add Flat", new_flat_path %>
